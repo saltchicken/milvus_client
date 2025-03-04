@@ -1,0 +1,15 @@
+[Unit]
+Description=My Docker Container
+Requires=docker.service
+After=docker.service
+
+[Service]
+User=root
+Group=root
+Restart=always
+ExecStart=/usr/bin/docker compose -f /home/saltchicken/projects/milvus/docker-compose.yml up
+ExecStop=/usr/bin/docker compose -f /home/saltchicken/projects/milvus/docker-compose.yml down
+
+[Install]
+WantedBy=multi-user.target
+
